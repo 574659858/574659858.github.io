@@ -152,6 +152,110 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-4月22日学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/22/4%E6%9C%8822%E6%97%A5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">4月22日学习笔记 </a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/22/4%E6%9C%8822%E6%97%A5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2020-04-22T08:05:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于MySQL"><a href="#关于MySQL" class="headerlink" title="关于MySQL"></a>关于MySQL</h1><h2 id="MySql的特点"><a href="#MySql的特点" class="headerlink" title="MySql的特点"></a>MySql的特点</h2><ol>
+<li>简单（安装简单。使用也相对简单）</li>
+<li>功能强大</li>
+<li>开源，有开放的版本。</li>
+</ol>
+<h2 id="MySQL应用场景"><a href="#MySQL应用场景" class="headerlink" title="MySQL应用场景"></a>MySQL应用场景</h2><ol>
+<li>创业公司</li>
+<li>互联网公司</li>
+</ol>
+<h2 id="MySQL应用架构（C-S架构）"><a href="#MySQL应用架构（C-S架构）" class="headerlink" title="MySQL应用架构（C/S架构）"></a>MySQL应用架构（C/S架构）</h2><ol>
+<li>server服务端</li>
+<li>client客户端</li>
+</ol>
+<h2 id="MySQL登录"><a href="#MySQL登录" class="headerlink" title="MySQL登录"></a>MySQL登录</h2><p>mysql -u root -p<br>其中： </p>
+<ol>
+<li>mysql指令为一个mysql的客户端程序</li>
+<li>-u 表示用户选项</li>
+<li>-p 表示密码选项</li>
+</ol>
+<p>退出 quit</p>
+<h2 id="MySql-基本指令的应用"><a href="#MySql-基本指令的应用" class="headerlink" title="MySql 基本指令的应用"></a>MySql 基本指令的应用</h2><ol>
+<li>status查看当前数据库系统的状态信息</li>
+<li>show databases； 查看当前用户下的数据库</li>
+<li>select user（）；查看当前登录用户</li>
+<li>select now（）； 查看当前时间</li>
+<li>？functions （？表示帮助，functions表示函数）</li>
+</ol>
+<h3 id="表的应用"><a href="#表的应用" class="headerlink" title="表的应用"></a>表的应用</h3><ol>
+<li><p>创建表<br> create table if exists pet(</p>
+<pre><code>id int(2) primary key auto_increment,
+name varchar(100) not null ;</code></pre><p> )<br> 当需要了解具体的数据类型： ？ 具体数据类型</p>
+</li>
+<li><p>修改表（语法？ alter table）    </p>
+</li>
+<li><p>删除表（语法？ drop table)<br> drop table if exists pet;</p>
+</li>
+<li><p>向表中写入数据（insert）<br> insert into tablename values (value);<br> insert into tablename(table element , table element ) values (value, value);<br> isnert into tablename(table element) values (value);<br> insert into tablename(table element) values (value1) , (value2);</p>
+</li>
+<li><p>查询表中数据（select）<br> select * from tablename;<br> select table element , table element2 from tablename;<br> select table element , table element2 from tablename where tablename = value;</p>
+<p> 分页查询<br> select * from tablename limit number;</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/22/4%E6%9C%8822%E6%97%A5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020年4月21日随笔" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -257,74 +361,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/20/%E4%B8%80%E7%AF%87%E9%9A%8F%E4%BE%BF%E8%81%8A%E8%81%8A%EF%BC%8C%E9%9A%8F%E4%BE%BF%E8%AF%B4%E8%AF%B4%E7%9A%84%E9%9A%8F%E7%AC%94/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的博客“" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/18/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E2%80%9C/">我的博客“</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/18/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E2%80%9C/" class="archive-article-date">
-  	<time datetime="2020-04-18T08:54:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##第一章</p>
-<p>内容</p>
-<hr>
-<p>##第二章</p>
-<p>内容 爱你~</p>
-<hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/18/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E2%80%9C/">展开全文 >></a>
         </p>
       
 
