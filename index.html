@@ -152,6 +152,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-5-16日学习随笔" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/16/5-16%E6%97%A5%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/">5.16日学习随笔</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/16/5-16%E6%97%A5%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/" class="archive-article-date">
+  	<time datetime="2020-05-16T05:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Component-Repository-Service-Controller注解使用说明"><a href="#Component-Repository-Service-Controller注解使用说明" class="headerlink" title="@Component @Repository @Service @Controller注解使用说明"></a>@Component @Repository @Service @Controller注解使用说明</h2><blockquote>
+<p>@Component </p>
+</blockquote>
+<hr>
+<p>这个注解可以用在任何类型上面。<br>通常情况下将这个注解用在类上面，标注这个类为一个组件，默认情况下，被扫描的时候会被作为bean注册到容器中。<br>value参数：被注册为bean的时候，用来指定bean的名称，如果不指定，默认为类名首字母小写。如：类UserService对应的beanname为userService</p>
+<blockquote>
+<p>@Repository @Service @Controller</p>
+</blockquote>
+<hr>
+<p>这4个注解本质上是没有任何差别，都可以用在类上面，表示这个类被spring容器扫描的时候，可以作为一个bean组件注册到spring容器中。</p>
+<p>spring容器中对这4个注解的解析并没有进行区分，统一采用@Component注解的方式进行解析，所以这几个注解之间可以相互替换。</p>
+<p>spring提供这4个注解，是为了让系统更清晰，通常情况下，系统是分层结构的，多数系统一般分为controller层、service层、dao层。</p>
+<p>@controller通常用来标注controller层组件，@service注解标注service层的组件，@Repository标注dao层的组件，这样可以让整个系统的结构更清晰，当看到这些注解的时候，会和清晰的知道属于哪个层，对于spring来说，将这3个注解替换成@Component注解，对系统没有任何影响，产生的效果是一样的。</p>
+<blockquote>
+<p>@ComponentScan 使用总结</p>
+</blockquote>
+<p>@ComponentScan用于批量注册bean，spring会按照这个注解的配置，递归扫描指定包中的所有类，将满足条件的类批量注册到spring容器中<br>可以通过value、basePackages、basePackageClasses 这几个参数来配置包的扫描范围<br>可以通过useDefaultFilters、includeFilters、excludeFilters这几个参数来配置类的过滤器，被过滤器处理之后剩下的类会被注册到容器中<br>指定包名的方式配置扫描范围存在隐患，包名被重命名之后，会导致扫描实现，所以一般我们在需要扫描的包中可以创建一个标记的接口或者类，作为basePackageClasses的值，通过这个来控制包的扫描范围<br>@CompontScan注解会被ConfigurationClassPostProcessor类递归处理，最终得到所有需要注册的类。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/16/5-16%E6%97%A5%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-4月26日随便说说" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
