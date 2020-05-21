@@ -16,7 +16,7 @@
 <meta property="og:description" content="@Component @Repository @Service @Controller注解使用说明 @Component    这个注解可以用在任何类型上面。通常情况下将这个注解用在类上面，标注这个类为一个组件，默认情况下，被扫描的时候会被作为bean注册到容器中。value参数：被注册为bean的时候，用来指定bean的名称，如果不指定，默认为类名首字母小写。如：类UserService对应的b">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-16T05:42:46.000Z">
-<meta property="article:modified_time" content="2020-05-16T06:19:16.986Z">
+<meta property="article:modified_time" content="2020-05-16T07:19:46.014Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -191,6 +191,24 @@
 <p>@ComponentScan 使用总结</p>
 </blockquote>
 <p>@ComponentScan用于批量注册bean，spring会按照这个注解的配置，递归扫描指定包中的所有类，将满足条件的类批量注册到spring容器中<br>可以通过value、basePackages、basePackageClasses 这几个参数来配置包的扫描范围<br>可以通过useDefaultFilters、includeFilters、excludeFilters这几个参数来配置类的过滤器，被过滤器处理之后剩下的类会被注册到容器中<br>指定包名的方式配置扫描范围存在隐患，包名被重命名之后，会导致扫描实现，所以一般我们在需要扫描的包中可以创建一个标记的接口或者类，作为basePackageClasses的值，通过这个来控制包的扫描范围<br>@CompontScan注解会被ConfigurationClassPostProcessor类递归处理，最终得到所有需要注册的类。</p>
+<blockquote>
+<p>@Import</p>
+</blockquote>
+<p>总结下来作用就是和xml配置的 <import />标签作用一样，允许通过它引入@Configuration标注的类 ， 引入ImportSelector接口和ImportBeanDefinitionRegistrar接口的实现，也包括 @Component注解的普通类。</p>
+<p>总的来说：@Import可以用来批量导入需要注册的各种类，如普通的类、配置类，完后完成普通类和配置类中所有bean的注册。</p>
+<blockquote>
+<blockquote>
+<p>@Import 的value常见的五种用法</p>
+</blockquote>
+</blockquote>
+<ol>
+<li>value为普通的类</li>
+<li>value为@Configuration标注的类</li>
+<li>value为@CompontentScan标注的类</li>
+<li>value为ImportBeanDefinitionRegistrar接口类型</li>
+<li>value为ImportSelector接口类型</li>
+<li>value为DeferredImportSelector接口类型</li>
+</ol>
 
       
 
@@ -263,9 +281,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/05/19/5-19%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          5.19学习记录
+        
+      </div>
+    </a>
   
-    <a href="/2020/04/26/4%E6%9C%8826%E6%97%A5%E9%9A%8F%E4%BE%BF%E8%AF%B4%E8%AF%B4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">4月26日随便说说</div>
+  
+    <a href="/2020/04/23/4%E6%9C%8823%E6%97%A5%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">4月23日学习随笔</div>
       <i class="icon-circle-right"></i>
     </a>
   
