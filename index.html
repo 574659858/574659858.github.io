@@ -152,6 +152,127 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-5-22学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/22/5-22%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">5.22学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/22/5-22%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2020-05-22T05:16:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="高并发系列第三天"><a href="#高并发系列第三天" class="headerlink" title="高并发系列第三天"></a>高并发系列第三天</h2><blockquote>
+<p>volatile</p>
+</blockquote>
+<p>首先明确一个问题两个线程之间都有着属于自己的私有内存空间，并且有着一个主要的主内存空间，当线程运行时，变量进行改变（比如说 x = 0 变为 x = 1），这是改变的时私有内存中的变量，主内存的变量仍然没有改变（主内存中的x = 0 ）此时第二个内存运行时或许到的主内存的变量仍然时改变前的值。</p>
+<p>这时候我们就要对变量前加入volatile 关键字，这个关键字可以主内存的变量变更为共享变量。<br>特点如下：</p>
+<ol>
+<li>线程中读取的时候，每次读取都会去主内存中读取共享变量最新的值，然后将其复制到工作内存</li>
+<li>线程中修改了工作内存中变量的副本，修改之后会立即刷新到主内存</li>
+</ol>
+<p>当加入volatile关键字时，当第一个线程运行时将变量进行改变，并且将变化后的变量更新到主内存中，在第二个线程运行前，获取主内存，对自己私有内存中的变量进行更新，这样就可以达到线程之间进行通信</p>
+<p>volatile解决了共享变量在多线程中可见性的问题，可见性是指一个线程对共享变量的修改，对于另一个线程来说是否是可以看到的。</p>
+<blockquote>
+<p>线程组（ThreadGroup)</p>
+</blockquote>
+<p><code>ThreadGroup threadGroup = new ThreadGroup()</code><br>创建一个线程组</p>
+<p><strong>activeCount()</strong>方法可以返回线程组中的所有活动线程数，包含下面的所有子孙节点的线程，由于线程组中的线程是动态变化的，这个值只能是一个估算值。</p>
+<p><code>public ThreadGroup(String name )
+  public ThreadGroup(ThreadGroup parent , String name)</code></p>
+<p> 创建线程组的时候，可以给其指定一个父线程组，也可以不指定，如果不指定父线程组，则父线程组为当前线程的线程组，java api有2个常用的构造方法用来创建线程组： </p>
+<blockquote>
+<p>用户线程和守护线程</p>
+</blockquote>
+<p><strong>守护线程</strong> 是一种特殊的线程，在后台默默地完成一些系统性的服务，比如垃圾回收线程、JIT线程都是守护线程。</p>
+<p><strong>用户线程</strong>可以理解为是系统的工作线程，它会完成这个程序需要完成的业务操作。如果用户线程全部结束了，意味着程序需要完成的业务操作已经结束了，系统可以退出了。<strong>所以当系统只剩下守护进程的时候，java虚拟机会自动退出。</strong></p>
+<p>java线程分为用户线程和守护线程，线程的daemon属性为true表示是守护线程，false表示是用户线程。</p>
+<blockquote>
+<p>线程安全和synchronized关键字</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>什么是线程安全</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>当多个线程去访问同一个类（对象或方法）的时候，该类都能表现出正常的行为（与自己预想的结果一致），那我们就可以所这个类是线程安全的。</p>
+<p>造成线程安全问题的主要诱因有两点：</p>
+<ol>
+<li>一是存在共享数据(也称临界资源)</li>
+<li>二是存在多条线程共同操作共享数据</li>
+</ol>
+<p>当存在多个线程操作共享数据时，需要保证同一时刻有且只有一个线程在操作共享数据，其他线程必须等到该线程处理完数据后再进行，这种方式有个高尚的名称叫互斥锁，即能达到互斥访问目的的锁，也就是说当一个共享数据被当前正在访问的线程加上互斥锁后，在同一个时刻，其他线程只能处于等待的状态，直到当前线程处理完毕释放该锁。在 Java 中，关键字 synchronized可以保证在同一个时刻，只有一个线程可以执行某个方法或者某个代码块(主要是对方法或者代码块中存在共享数据的操作)，同时我们还应该注意到synchronized另外一个重要的作用，synchronized可保证一个线程的变化(主要是共享数据的变化)被其他线程所看到（保证可见性，完全可以替代volatile功能）</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>synchronized主要有3种使用方式</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ol>
+<li>修饰实例方法，作用于当前实例，进入同步代码前需要先获取实例的锁</li>
+<li>修饰静态方法，作用于类的Class对象，进入修饰的静态方法前需要先获取类的Class对象的锁</li>
+<li>修饰代码块，需要指定加锁对象(记做lockobj)，在进入同步代码块前需要先获取lockobj的锁</li>
+</ol>
+<p>重点说明一下第三个（修饰代码块）<br><code>synchronized (instance ){
+    for(int j = 0 ; j&lt; 10000; j++){
+        i++;
+    }
+}</code><br>使用使用同步代码块对变量i进行同步操作,锁对象为instance</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/22/5-22%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-5-21学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
